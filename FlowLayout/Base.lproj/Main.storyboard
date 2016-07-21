@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="608-AI-oSG">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Layout-->
+        <scene sceneID="oZO-7S-Dmr">
+            <objects>
+                <collectionViewController id="uZE-jf-KaH" customClass="ViewController" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" id="A3h-9e-jTy">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="AUk-FK-Ke3">
+                            <size key="itemSize" width="137" height="42"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="10" minY="20" maxX="10" maxY="20"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TagCell" id="fTp-rT-B80" customClass="TagCell">
+                                <rect key="frame" x="10" y="84" width="137" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="137" height="42"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nkj-7C-9TH">
+                                            <rect key="frame" x="8" y="8" width="121" height="26"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="lessThanOrEqual" priority="900" constant="150" id="OPV-6y-mKT"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="nkj-7C-9TH" firstAttribute="top" secondItem="fTp-rT-B80" secondAttribute="topMargin" id="Dc9-f6-e9l"/>
+                                    <constraint firstAttribute="leadingMargin" secondItem="nkj-7C-9TH" secondAttribute="leading" id="Qlx-y7-cBd"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="nkj-7C-9TH" secondAttribute="trailing" id="Re2-10-1jK"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="nkj-7C-9TH" secondAttribute="bottom" id="d7T-1Z-OG2"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="maxWidthConstraint" destination="OPV-6y-mKT" id="zgh-hr-f1P"/>
+                                    <outlet property="textLabel" destination="nkj-7C-9TH" id="ScV-fi-9MA"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="uZE-jf-KaH" id="Sga-M7-MEM"/>
+                            <outlet property="delegate" destination="uZE-jf-KaH" id="Y9L-Yh-ihl"/>
+                        </connections>
+                    </collectionView>
+                    <navigationItem key="navigationItem" title="Layout" id="EQA-cq-vKW"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O9K-GQ-QRx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="972" y="22"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="jvC-9q-tXp">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="608-AI-oSG" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xtg-QC-96a">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="uZE-jf-KaH" kind="relationship" relationship="rootViewController" id="3iu-e9-ehr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2JD-C1-Oo0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="160" y="22"/>
+        </scene>
+    </scenes>
+</document>
