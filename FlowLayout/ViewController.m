@@ -17,15 +17,22 @@
 
 @implementation ViewController
 
+- (void)generateItems {
+    NSNumberFormatter *nf = [NSNumberFormatter new];
+    nf.numberStyle = NSNumberFormatterSpellOutStyle;
+    NSMutableArray *array = [NSMutableArray array];
+    for (NSInteger i = 0; i < 48; ++i) {
+        [array addObject:[NSString stringWithFormat:@"%@", [nf stringFromNumber:@(i)]]];
+    }
+    self.items = array.copy;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.items = @[@"foo", @"bar", @"uiviewcontroller", @"uiview",
-                   @"demo", @"superextralwwww wwwwww lonfnnfnfnfnnfnfn fnfnfnnfnf",
-                   @"3.14159265358979323846264338327950288419716939937508",
-                   @"1", @"2", @"three", @"hi!", @"easy peasy", @"wow" ];
+    [self generateItems];
     self.layout = [[FlowLayout alloc] init];
-    self.layout.alignment = FlowAlignmentLeft;
+    self.layout.alignment = FlowAlignmentRight;
     self.layout.estimatedItemSize = CGSizeMake(80, 30);
     self.layout.sectionInset = UIEdgeInsetsMake(20, 10, 20, 10);
     self.collectionView.collectionViewLayout = self.layout;
@@ -57,6 +64,24 @@
     cell.textLabel.numberOfLines = 1;
     cell.textLabel.text = self.items[indexPath.row];
     return cell;
+}
+
+- (IBAction)onLeft:(id)sender
+{
+    self.layout.alignment = FlowAlignmentLeft;
+    [self.layout invalidateLayout];
+}
+
+- (IBAction)onCenter:(id)sender
+{
+    self.layout.alignment = FlowAlignmentCenter;
+    [self.layout invalidateLayout];
+}
+
+- (IBAction)onRight:(id)sender
+{
+    self.layout.alignment = FlowAlignmentRight;
+    [self.layout invalidateLayout];
 }
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator

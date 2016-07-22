@@ -15,6 +15,7 @@
 		4B1304791D3FB9DC0044BEB2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B1304771D3FB9DC0044BEB2 /* LaunchScreen.storyboard */; };
 		4B1304821D3FBA230044BEB2 /* FlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1304811D3FBA230044BEB2 /* FlowLayout.m */; };
 		4B1304851D3FBAB50044BEB2 /* TagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B1304841D3FBAB50044BEB2 /* TagCell.m */; };
+		4BB5ED911D4259CD007D33E4 /* UICollectionViewLayoutAttributes+Aligned.m in Sources */ = {isa = PBXBuildFile; fileRef = 4BB5ED901D4259CD007D33E4 /* UICollectionViewLayoutAttributes+Aligned.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		4B1304811D3FBA230044BEB2 /* FlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowLayout.m; sourceTree = "<group>"; };
 		4B1304831D3FBAB50044BEB2 /* TagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagCell.h; sourceTree = "<group>"; };
 		4B1304841D3FBAB50044BEB2 /* TagCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagCell.m; sourceTree = "<group>"; };
+		4BB5ED8F1D4259CD007D33E4 /* UICollectionViewLayoutAttributes+Aligned.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionViewLayoutAttributes+Aligned.h"; sourceTree = "<group>"; };
+		4BB5ED901D4259CD007D33E4 /* UICollectionViewLayoutAttributes+Aligned.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionViewLayoutAttributes+Aligned.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +73,8 @@
 				4B1304701D3FB9DC0044BEB2 /* ViewController.m */,
 				4B1304801D3FBA230044BEB2 /* FlowLayout.h */,
 				4B1304811D3FBA230044BEB2 /* FlowLayout.m */,
+				4BB5ED8F1D4259CD007D33E4 /* UICollectionViewLayoutAttributes+Aligned.h */,
+				4BB5ED901D4259CD007D33E4 /* UICollectionViewLayoutAttributes+Aligned.m */,
 				4B1304831D3FBAB50044BEB2 /* TagCell.h */,
 				4B1304841D3FBAB50044BEB2 /* TagCell.m */,
 				4B1304721D3FB9DC0044BEB2 /* Main.storyboard */,
@@ -163,6 +168,7 @@
 				4B1304711D3FB9DC0044BEB2 /* ViewController.m in Sources */,
 				4B1304821D3FBA230044BEB2 /* FlowLayout.m in Sources */,
 				4B13046E1D3FB9DC0044BEB2 /* AppDelegate.m in Sources */,
+				4BB5ED911D4259CD007D33E4 /* UICollectionViewLayoutAttributes+Aligned.m in Sources */,
 				4B13046B1D3FB9DC0044BEB2 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

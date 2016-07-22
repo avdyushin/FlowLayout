@@ -58,6 +58,27 @@
                             <outlet property="delegate" destination="uZE-jf-KaH" id="Y9L-Yh-ihl"/>
                         </connections>
                     </collectionView>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="E3x-CL-OzM"/>
+                        <barButtonItem title="Left" id="xdS-Bg-3Yf">
+                            <connections>
+                                <action selector="onLeft:" destination="uZE-jf-KaH" id="2FA-4d-Aef"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="NHA-SI-OSG"/>
+                        <barButtonItem title="Center" id="cV8-oN-HO6">
+                            <connections>
+                                <action selector="onCenter:" destination="uZE-jf-KaH" id="wme-nL-e1l"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="4qt-7c-IPk"/>
+                        <barButtonItem title="Right" id="Zxy-kX-QqS">
+                            <connections>
+                                <action selector="onRight:" destination="uZE-jf-KaH" id="34a-JD-rAJ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="U33-zY-EWj"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Layout" id="EQA-cq-vKW"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O9K-GQ-QRx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -67,13 +88,18 @@
         <!--Navigation Controller-->
         <scene sceneID="jvC-9q-tXp">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="608-AI-oSG" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="608-AI-oSG" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xtg-QC-96a">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="BA9-16-QOz">
+                        <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="uZE-jf-KaH" kind="relationship" relationship="rootViewController" id="3iu-e9-ehr"/>
                     </connections>
