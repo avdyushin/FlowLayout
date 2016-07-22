@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 typedef NS_ENUM(NSInteger, FlowAlignment) {
-    FlowAlignmentDefault,
+    FlowAlignmentJustyfied,
     FlowAlignmentLeft,
     FlowAlignmentCenter,
     FlowAlignmentRight

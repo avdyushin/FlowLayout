@@ -10,10 +10,15 @@
 #import "UICollectionViewLayoutAttributes+Aligned.h"
 
 @interface FlowLayout() { }
-
+@property (strong, nonatomic) NSMutableDictionary *cache;
 @end
 
 @implementation FlowLayout
+
+- (void)prepareLayout
+{
+    self.cache = [NSMutableDictionary dictionary];
+}
 
 - (NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect
 {
@@ -23,6 +28,9 @@
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.alignment == FlowAlignmentCenter) {
+        return [self centerAttributesAtIndexPath:indexPath];
+    }
     UICollectionViewLayoutAttributes *attributes = [super layoutAttributesForItemAtIndexPath:indexPath].copy;
     return [self layoutAttributesForItem:attributes atIndexPath:indexPath];
 }
@@ -45,9 +53,11 @@
     switch (self.alignment) {
         case FlowAlignmentLeft:    return [self leftAttributes:attributes   atIndexPath:indexPath];
         case FlowAlignmentRight:   return [self rightAttributes:attributes  atIndexPath:indexPath];
-        case FlowAlignmentCenter:  return [self centerAttributes:attributes atIndexPath:indexPath];
-        case FlowAlignmentDefault: return attributes;
+        case FlowAlignmentJustyfied:
+        default:
+            return attributes;
     }
+    return attributes;
 }
 
 - (UICollectionViewLayoutAttributes *)leftAttributes:(UICollectionViewLayoutAttributes *)attributes atIndexPath:(NSIndexPath *)indexPath
@@ -97,8 +107,71 @@
     return attributes;
 }
 
-- (UICollectionViewLayoutAttributes *)centerAttributes:(UICollectionViewLayoutAttributes *)attributes atIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewLayoutAttributes *)centerAttributesAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (self.cache[indexPath]) {
+        return self.cache[indexPath];
+    }
+    
+    UICollectionViewLayoutAttributes *attributes = [super layoutAttributesForItemAtIndexPath:indexPath];
+    NSMutableArray *itemsInRow = [NSMutableArray array];
+    
+    const NSInteger totalInSection = [self.collectionView numberOfItemsInSection:indexPath.section];
+    const CGFloat width = CGRectGetWidth(self.collectionView.bounds);
+    const CGRect rowFrame = CGRectMake(0, CGRectGetMinY(attributes.frame), width, CGRectGetHeight(attributes.frame));
+
+    // Go forward
+    NSInteger index = indexPath.row;
+    while(index++ < totalInSection - 1) {
+
+        UICollectionViewLayoutAttributes *next = [super layoutAttributesForItemAtIndexPath:[NSIndexPath indexPathForItem:index
+                                                                                                               inSection:indexPath.section]];
+        
+        if (!CGRectIntersectsRect(next.frame, rowFrame)) {
+            break;
+        }
+        
+        [itemsInRow addObject:next];
+    }
+    
+    // Current item
+    [itemsInRow addObject:attributes];
+    
+    // Go backward
+    index = indexPath.row;
+    while (index-- > 0) {
+        UICollectionViewLayoutAttributes *prev = [super layoutAttributesForItemAtIndexPath:[NSIndexPath indexPathForItem:index
+                                                                                                               inSection:indexPath.section]];
+        
+        if (!CGRectIntersectsRect(prev.frame, rowFrame)) {
+            break;
+        }
+        
+        [itemsInRow addObject:prev];
+    }
+    
+    // Items width with spacings
+    CGFloat totalWidth = self.minimumInteritemSpacing * (itemsInRow.count - 1);
+    for (UICollectionViewLayoutAttributes *item in itemsInRow) {
+        totalWidth += CGRectGetWidth(item.frame);
+    }
+    
+    CGRect prevRect = CGRectZero;
+    for (UICollectionViewLayoutAttributes *item in itemsInRow) {
+        
+        CGRect frame = item.frame;
+        if (CGRectEqualToRect(prevRect, CGRectZero)) {
+            frame.origin.x = (width - totalWidth) / 2.0f;
+        } else {
+            frame.origin.x = CGRectGetMaxX(prevRect) + self.minimumInteritemSpacing;
+        }
+        item.frame = frame;
+        prevRect = frame;
+        
+        self.cache[item.indexPath] = item;
+    }
+    
+    self.cache[indexPath] = attributes;
     return attributes;
 }
 

@@ -21,7 +21,7 @@
     NSNumberFormatter *nf = [NSNumberFormatter new];
     nf.numberStyle = NSNumberFormatterSpellOutStyle;
     NSMutableArray *array = [NSMutableArray array];
-    for (NSInteger i = 0; i < 48; ++i) {
+    for (NSInteger i = 0; i < 15; ++i) {
         [array addObject:[NSString stringWithFormat:@"%@", [nf stringFromNumber:@(i)]]];
     }
     self.items = array.copy;
@@ -32,7 +32,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     [self generateItems];
     self.layout = [[FlowLayout alloc] init];
-    self.layout.alignment = FlowAlignmentRight;
+    self.layout.alignment = FlowAlignmentCenter;
     self.layout.estimatedItemSize = CGSizeMake(80, 30);
     self.layout.sectionInset = UIEdgeInsetsMake(20, 10, 20, 10);
     self.collectionView.collectionViewLayout = self.layout;
