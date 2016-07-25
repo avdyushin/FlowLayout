@@ -21,8 +21,13 @@
     NSNumberFormatter *nf = [NSNumberFormatter new];
     nf.numberStyle = NSNumberFormatterSpellOutStyle;
     NSMutableArray *array = [NSMutableArray array];
-    for (NSInteger i = 0; i < 15; ++i) {
+    const NSInteger count = 28;
+    for (NSInteger i = 0; i < count; ++i) {
         [array addObject:[NSString stringWithFormat:@"%@", [nf stringFromNumber:@(i)]]];
+    }
+    for (NSInteger i = 0; i < count - 1; ++i) {
+        id peek = [array objectAtIndex:i + arc4random_uniform((int)(count - i))];
+        [array replaceObjectAtIndex:i withObject:peek];
     }
     self.items = array.copy;
 }
@@ -69,24 +74,32 @@
 - (IBAction)onLeft:(id)sender
 {
     self.layout.alignment = FlowAlignmentLeft;
-    [self.layout invalidateLayout];
 }
 
 - (IBAction)onCenter:(id)sender
 {
     self.layout.alignment = FlowAlignmentCenter;
-    [self.layout invalidateLayout];
+}
+
+- (IBAction)onJustified:(id)sender
+{
+    self.layout.alignment = FlowAlignmentJustyfied;
 }
 
 - (IBAction)onRight:(id)sender
 {
     self.layout.alignment = FlowAlignmentRight;
-    [self.layout invalidateLayout];
 }
 
-- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+- (IBAction)onRefresh:(id)sender
 {
-    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    [self generateItems];
+    [self.collectionView reloadData];
 }
+
+//- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+//{
+//    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+//}
 
 @end

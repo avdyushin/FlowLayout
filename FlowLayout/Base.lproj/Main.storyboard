@@ -66,12 +66,18 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="NHA-SI-OSG"/>
-                        <barButtonItem title="Center" id="cV8-oN-HO6">
+                        <barButtonItem title="Centered" id="cV8-oN-HO6">
                             <connections>
                                 <action selector="onCenter:" destination="uZE-jf-KaH" id="wme-nL-e1l"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="4qt-7c-IPk"/>
+                        <barButtonItem title="Justyfied" id="6j9-TF-D2U">
+                            <connections>
+                                <action selector="onJustified:" destination="uZE-jf-KaH" id="wBS-3c-fAS"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Pqa-2Z-wry"/>
                         <barButtonItem title="Right" id="Zxy-kX-QqS">
                             <connections>
                                 <action selector="onRight:" destination="uZE-jf-KaH" id="34a-JD-rAJ"/>
@@ -79,7 +85,13 @@
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="U33-zY-EWj"/>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" title="Layout" id="EQA-cq-vKW"/>
+                    <navigationItem key="navigationItem" title="Layout" id="EQA-cq-vKW">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="Z1T-Mx-Qrm">
+                            <connections>
+                                <action selector="onRefresh:" destination="uZE-jf-KaH" id="E8H-At-pgY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O9K-GQ-QRx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
