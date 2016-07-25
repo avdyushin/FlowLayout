@@ -40,18 +40,8 @@
     self.layout.alignment = FlowAlignmentCenter;
     self.layout.estimatedItemSize = CGSizeMake(80, 30);
     self.layout.sectionInset = UIEdgeInsetsMake(20, 10, 20, 10);
+    self.layout.headerReferenceSize = CGSizeMake(300, 30);
     self.collectionView.collectionViewLayout = self.layout;
-}
-
-- (void)viewWillLayoutSubviews
-{
-    [super viewWillLayoutSubviews];
-//    [self.collectionView.collectionViewLayout invalidateLayout];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
@@ -60,6 +50,14 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.items.count;
+}
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
+{
+    if (kind == UICollectionElementKindSectionHeader) {
+        return [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"TagHeader" forIndexPath:indexPath];
+    }
+    return nil;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -96,10 +94,5 @@
     [self generateItems];
     [self.collectionView reloadData];
 }
-
-//- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
-//{
-//    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
-//}
 
 @end

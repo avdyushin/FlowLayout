@@ -56,7 +56,11 @@
     NSMutableArray<UICollectionViewLayoutAttributes *> *alignedAttributes = [NSMutableArray new];
     
     for (UICollectionViewLayoutAttributes *item in attributes) {
-        [alignedAttributes addObject:[self layoutAttributesForItem:item atIndexPath:item.indexPath]];
+        if(item.representedElementKind != nil) {
+            [alignedAttributes addObject:item];
+        } else {
+            [alignedAttributes addObject:[self layoutAttributesForItem:item atIndexPath:item.indexPath]];
+        }
     }
     
     return alignedAttributes.copy;
