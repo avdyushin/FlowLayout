@@ -39,7 +39,7 @@
     self.layout = [[FlowLayout alloc] init];
     self.layout.alignment = FlowAlignmentCenter;
     self.layout.estimatedItemSize = CGSizeMake(80, 30);
-    self.layout.sectionInset = UIEdgeInsetsMake(20, 10, 20, 10);
+    self.layout.sectionInset = UIEdgeInsetsMake(20, 30, 20, 30);
     self.layout.headerReferenceSize = CGSizeMake(300, 30);
     self.collectionView.collectionViewLayout = self.layout;
 }

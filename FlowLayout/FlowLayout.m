@@ -133,13 +133,13 @@
         if (CGRectIsEmpty(rect)) {
             switch (self.alignment) {
                 case FlowAlignmentLeft:
-                    x = self.minimumInteritemSpacing;
+                    x = self.sectionInset.left;
                     break;
                 case FlowAlignmentCenter:
                     x = (width - totalWidth) / 2.0f;
                     break;
                 case FlowAlignmentRight:
-                    x = width - totalWidth - self.minimumInteritemSpacing;
+                    x = width - totalWidth - self.sectionInset.right;
                 default:
                     break;
             }
