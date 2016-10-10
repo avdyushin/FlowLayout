@@ -19,4 +19,10 @@
     self.backgroundColor = [UIColor colorWithWhite:1 alpha:0.5];
 }
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    self.layer.cornerRadius = CGRectGetMidY(self.bounds);
+}
+
 @end

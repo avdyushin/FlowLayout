@@ -14,6 +14,12 @@
 
 @implementation FlowLayout
 
+- (void)setAlignment:(FlowAlignment)alignment
+{
+    _alignment = alignment;
+    [self invalidateLayout];
+}
+
 - (void)prepareLayout
 {
     [super prepareLayout];
@@ -26,10 +32,14 @@
     self.cache = [NSCache new];
 }
 
-- (void)setAlignment:(FlowAlignment)alignment
+- (BOOL)shouldInvalidateLayoutForPreferredLayoutAttributes:(UICollectionViewLayoutAttributes *)preferredAttributes withOriginalAttributes:(UICollectionViewLayoutAttributes *)originalAttributes
 {
-    _alignment = alignment;
-    [self invalidateLayout];
+    return YES;
+}
+
+- (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds
+{
+    return YES;
 }
 
 - (NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect
@@ -123,6 +133,11 @@
     for (UICollectionViewLayoutAttributes *item in itemsInRow) {
         totalWidth += CGRectGetWidth(item.frame);
     }
+    
+    // Correct sorting in row
+    [itemsInRow sortUsingComparator:^NSComparisonResult(UICollectionViewLayoutAttributes *obj1, UICollectionViewLayoutAttributes *obj2) {
+        return obj1.indexPath.row > obj2.indexPath.row;
+    }];
     
     CGRect rect = CGRectZero;
     for (UICollectionViewLayoutAttributes *item in itemsInRow) {
